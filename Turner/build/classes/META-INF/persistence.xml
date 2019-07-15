@@ -5,6 +5,8 @@
     <class>entity.Services</class>
     <class>entity.Priority</class>
     <class>entity.Adviser</class>
+    <class>entity.Punto</class>
+    <class>entity.Puntoservices</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/turner"/>
       <property name="javax.persistence.jdbc.user" value="kyndo"/>

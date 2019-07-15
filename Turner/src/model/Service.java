@@ -49,7 +49,28 @@ public class Service {
                 JOptionPane.showMessageDialog(null, "No exite servicio " + id);
             } else {
                 JOptionPane.showMessageDialog(null, "Servicio encontrado ");
-            }
+           }
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return service;
+
+    }
+    
+     public Services ConsultaServiceL(String name) {
+
+        Services service = new Services();
+        EntityManager em = serviceCtrl.getEntityManager();
+        try {
+            Query query = em.createQuery("SELECT s FROM Services s WHERE s.name LIKE :name");
+            query.setParameter("name", "%" + name + "%");
+            service = (Services) query.getSingleResult();
+            if (serviceCtrl.findServices(name) == null) {
+                //JOptionPane.showMessageDialog(null, "No exite servicio " + name);
+            } else {
+                //JOptionPane.showMessageDialog(null, "Servicio encontrado ");
+           }
 
         } catch (Exception e) {
             System.out.println(e);

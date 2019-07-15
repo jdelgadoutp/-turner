@@ -5,6 +5,7 @@
  */
 package turner;
 
+import java.awt.Window;
 import view.PrincipalView;
 import view.ServiceView;
 
@@ -22,6 +23,7 @@ public class Turner {
         PrincipalView principal = new PrincipalView();
                 
         principal.setTitle("Turner");
+        principal.setSize(520, 700);
         principal.setLocationRelativeTo(null);
         principal.setVisible(true);
     }
