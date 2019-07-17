@@ -22,7 +22,7 @@ public class PuntsServices {
 
     private PuntoservicesJpaController puntoservicesCtrl = new PuntoservicesJpaController();
     private Puntoservices puntoservices = new Puntoservices();
-   
+
     public String InsertPuntoservices(String punto, String service, String servicename) {
 
         try {
@@ -41,19 +41,20 @@ public class PuntsServices {
     public void LlenarPuntoservices(JTable table, String service) {
 
         DefaultTableModel model;
-        String[] title = {"Servicio", "Nombre servicio"};
+        String[] title = {"Servicio", "Nombre servicio", "Id"};
         model = new DefaultTableModel(null, title);
         List<Puntoservices> data = BuscarDatos(service);
-        String[] data_table = new String[2];
+        String[] data_table = new String[3];
         for (Puntoservices ent : data) {
             data_table[0] = ent.getService() + "";
             data_table[1] = ent.getServicename();
+            data_table[2] = ent.getId() + "";
             model.addRow(data_table);
         }
         table.setModel(model);
     }
 
-    public String DeletePunto(int id) {
+    public String DeletePuntoservices(int id) {
         try {
             puntoservicesCtrl.destroy(id);
             JOptionPane.showMessageDialog(null, "Servicio eliminado " + id);

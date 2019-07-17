@@ -19,11 +19,11 @@ import javax.swing.table.DefaultTableModel;
  * @author ANDRES
  */
 public class Prioritys {
-    
+
     private PriorityJpaController priorityCtrl = new PriorityJpaController();
     private Priority priority = new Priority();
 
-    public String InsertPriority(String id,String name) {
+    public String InsertPriority(String id, String name) {
 
         try {
             priority.setId(id);
@@ -58,6 +58,27 @@ public class Prioritys {
 
     }
 
+    public Priority ConsultaPriorityL(String name) {
+
+        Priority priority = new Priority();
+        EntityManager em = priorityCtrl.getEntityManager();
+        try {
+            Query query = em.createQuery("SELECT p FROM Priority p WHERE p.name LIKE  :name");
+            query.setParameter("name", "%" + name + "%");
+            priority = (Priority) query.getSingleResult();
+            if (priorityCtrl.findPriority(name) == null) {
+                //JOptionPane.showMessageDialog(null, "No exite prioridad " + name);
+            } else {
+                //JOptionPane.showMessageDialog(null, "Prioridad encontrado ");
+            }
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return priority;
+
+    }
+
     public void LlenarPriority(JTable table, String name) {
 
         DefaultTableModel model;
@@ -83,8 +104,8 @@ public class Prioritys {
         }
         return null;
     }
-    
-    public String UpdatePriority(String id,String name){
+
+    public String UpdatePriority(String id, String name) {
         try {
             priority.setId(id);
             priority.setName(name);
@@ -96,7 +117,7 @@ public class Prioritys {
         }
         return null;
     }
-    
+
     private List<Priority> BuscarDatos(String name) {
         EntityManager em = priorityCtrl.getEntityManager();
         Query query = em.createQuery("SELECT p FROM Priority p WHERE p.name LIKE :name");
@@ -105,5 +126,4 @@ public class Prioritys {
         return data;
     }
 
-    
 }

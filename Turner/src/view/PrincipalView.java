@@ -10,6 +10,7 @@ import model.Prioritys;
 import model.Punts;
 import model.PuntsServices;
 import model.Service;
+import model.Turns;
 
 /**
  *
@@ -68,6 +69,11 @@ public class PrincipalView extends javax.swing.JFrame {
         });
 
         btnTurn.setText("Turno");
+        btnTurn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTurnActionPerformed(evt);
+            }
+        });
 
         btnAdviser.setText("Prestador");
         btnAdviser.addActionListener(new java.awt.event.ActionListener() {
@@ -158,6 +164,15 @@ public class PrincipalView extends javax.swing.JFrame {
         punts.LlenarPunto(puntoview.tblPunto, "");
         puntsService.LlenarPuntoservices(puntoview.tblServices, "");
     }//GEN-LAST:event_btnPuntoActionPerformed
+
+    private void btnTurnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTurnActionPerformed
+        // TODO add your handling code here:
+        TurnsView turnsview = new TurnsView();
+        Turns turns = new Turns();
+        turnsview.setTitle("Solicitud turno de atección");
+        turnsview.setLocationRelativeTo(this);
+        turnsview.setVisible(true);    
+    }//GEN-LAST:event_btnTurnActionPerformed
 
     /**
      * @param args the command line arguments

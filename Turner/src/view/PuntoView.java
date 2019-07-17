@@ -171,6 +171,11 @@ public class PuntoView extends javax.swing.JFrame {
         jLabel4.setText("Buscar");
 
         btnDeleteS.setText("-");
+        btnDeleteS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteSActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -335,11 +340,17 @@ public class PuntoView extends javax.swing.JFrame {
         if (tblServices.getRowCount() < 4) {
             puntsServices.InsertPuntoservices(txtId.getText(), idservi, servicename);
             puntsServices.LlenarPuntoservices(tblServices, txtId.getText());
-        }else{
+        } else {
             JOptionPane.showMessageDialog(null, "No se pueden configurar mas de 3 servicios por punto de atención");
         }
-        
+
     }//GEN-LAST:event_btnInsertSActionPerformed
+
+    private void btnDeleteSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteSActionPerformed
+        // TODO add your handling code here:
+       puntsServices.DeletePuntoservices(Integer.parseInt(tblServices.getValueAt(tblServices.getSelectedRow(), 2) + ""));
+       MostrarTxt();
+    }//GEN-LAST:event_btnDeleteSActionPerformed
 
     public void TableView() {
         punts.LlenarPunto(tblPunto, "");

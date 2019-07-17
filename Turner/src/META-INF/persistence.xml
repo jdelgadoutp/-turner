@@ -7,6 +7,11 @@
     <class>entity.Adviser</class>
     <class>entity.Punto</class>
     <class>entity.Puntoservices</class>
+    <class>entity.Turn</class>
+    <class>entity.Tailattention</class>
+    <class>entity.Tailattentionm</class>
+    <class>entity.Servicetailm</class>
+    <class>entity.Servicetail</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/turner"/>
       <property name="javax.persistence.jdbc.user" value="kyndo"/>
