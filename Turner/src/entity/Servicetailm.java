@@ -10,6 +10,8 @@ import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -28,23 +30,19 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "Servicetailm.findAll", query = "SELECT s FROM Servicetailm s")
     , @NamedQuery(name = "Servicetailm.findByServicefk", query = "SELECT s FROM Servicetailm s WHERE s.servicefk = :servicefk")
-    , @NamedQuery(name = "Servicetailm.findByTurn", query = "SELECT s FROM Servicetailm s WHERE s.turn = :turn")
     , @NamedQuery(name = "Servicetailm.findByServicename", query = "SELECT s FROM Servicetailm s WHERE s.servicename = :servicename")
     , @NamedQuery(name = "Servicetailm.findByFact", query = "SELECT s FROM Servicetailm s WHERE s.fact = :fact")
     , @NamedQuery(name = "Servicetailm.findByUserid", query = "SELECT s FROM Servicetailm s WHERE s.userid = :userid")
     , @NamedQuery(name = "Servicetailm.findByUsername", query = "SELECT s FROM Servicetailm s WHERE s.username = :username")
     , @NamedQuery(name = "Servicetailm.findByPriority", query = "SELECT s FROM Servicetailm s WHERE s.priority = :priority")
-    , @NamedQuery(name = "Servicetailm.findByPriorityname", query = "SELECT s FROM Servicetailm s WHERE s.priorityname = :priorityname")})
+    , @NamedQuery(name = "Servicetailm.findByPriorityname", query = "SELECT s FROM Servicetailm s WHERE s.priorityname = :priorityname")
+    , @NamedQuery(name = "Servicetailm.findByTurn", query = "SELECT s FROM Servicetailm s WHERE s.turn = :turn")})
 public class Servicetailm implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    @Id
     @Basic(optional = false)
     @Column(name = "servicefk")
     private String servicefk;
-    @Basic(optional = false)
-    @Column(name = "turn")
-    private int turn;
     @Column(name = "servicename")
     private String servicename;
     @Column(name = "fact")
@@ -58,17 +56,22 @@ public class Servicetailm implements Serializable {
     private Boolean priority;
     @Column(name = "priorityname")
     private String priorityname;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
+    @Column(name = "turn")
+    private Integer turn;
 
     public Servicetailm() {
     }
 
-    public Servicetailm(String servicefk) {
-        this.servicefk = servicefk;
+    public Servicetailm(Integer turn) {
+        this.turn = turn;
     }
 
-    public Servicetailm(String servicefk, int turn) {
-        this.servicefk = servicefk;
+    public Servicetailm(Integer turn, String servicefk) {
         this.turn = turn;
+        this.servicefk = servicefk;
     }
 
     public String getServicefk() {
@@ -77,14 +80,6 @@ public class Servicetailm implements Serializable {
 
     public void setServicefk(String servicefk) {
         this.servicefk = servicefk;
-    }
-
-    public int getTurn() {
-        return turn;
-    }
-
-    public void setTurn(int turn) {
-        this.turn = turn;
     }
 
     public String getServicename() {
@@ -135,10 +130,18 @@ public class Servicetailm implements Serializable {
         this.priorityname = priorityname;
     }
 
+    public Integer getTurn() {
+        return turn;
+    }
+
+    public void setTurn(Integer turn) {
+        this.turn = turn;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (servicefk != null ? servicefk.hashCode() : 0);
+        hash += (turn != null ? turn.hashCode() : 0);
         return hash;
     }
 
@@ -149,7 +152,7 @@ public class Servicetailm implements Serializable {
             return false;
         }
         Servicetailm other = (Servicetailm) object;
-        if ((this.servicefk == null && other.servicefk != null) || (this.servicefk != null && !this.servicefk.equals(other.servicefk))) {
+        if ((this.turn == null && other.turn != null) || (this.turn != null && !this.turn.equals(other.turn))) {
             return false;
         }
         return true;
@@ -157,7 +160,7 @@ public class Servicetailm implements Serializable {
 
     @Override
     public String toString() {
-        return "entity.Servicetailm[ servicefk=" + servicefk + " ]";
+        return "entity.Servicetailm[ turn=" + turn + " ]";
     }
     
 }

@@ -38,8 +38,8 @@ public class Punts {
         return null;
 
     }
-
-    public Punto ConsultaPunto(String id) {
+    
+     public Punto ConsultaPunto(String id) {
 
         Punto punto = new Punto();
         EntityManager em = puntoCtrl.getEntityManager();
@@ -48,9 +48,9 @@ public class Punts {
             query.setParameter("id", id);
             punto = (Punto) query.getSingleResult();
             if (puntoCtrl.findPunto(id) == null) {
-                JOptionPane.showMessageDialog(null, "No exite puesto de atención " + id);
+                //JOptionPane.showMessageDialog(null, "No exite puesto de atención " + id);
             } else {
-                JOptionPane.showMessageDialog(null, "Punto encontrado ");
+                //JOptionPane.showMessageDialog(null, "Punto encontrado ");
             }
 
         } catch (Exception e) {
@@ -60,7 +60,7 @@ public class Punts {
 
     }
 
-    public void LlenarPunto(JTable table, String adviser) {
+     public void LlenarPunto(JTable table, String adviser) {
 
         DefaultTableModel model;
         String[] title = {"Id", "Asesor","Activo","Nombre asesor"};

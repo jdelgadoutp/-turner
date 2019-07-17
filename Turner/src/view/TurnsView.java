@@ -148,7 +148,7 @@ public class TurnsView extends javax.swing.JFrame {
         // TODO add your handling code here:
         turns.InsertTurn(txtId.getText(), txtUsername.getText(), txtServicename.getText(), true, txtPrirorityname.getText());
         ServiceTailM servicetailm = new ServiceTailM();
-        servicetailm.InsertServiceTail(serviceid, 0, txtServicename.getText(), txtId.getText(), txtUsername.getText(), true, txtPrirorityname.getText());
+        servicetailm.InsertServiceTail(serviceid, txtServicename.getText(), txtId.getText(), txtUsername.getText(), true, txtPrirorityname.getText());
         this.setVisible(false);
     }//GEN-LAST:event_btnRequestActionPerformed
 

@@ -73,4 +73,19 @@ public class PuntsServices {
         return data;
     }
 
+    public String QueryService(String punts) {
+
+        String myQuery = "s.servicefk=\"";
+        String conditional = " or s.servicefk=\"";
+        List<Puntoservices> data = BuscarDatos(punts);
+        for (Puntoservices ent : data) {
+            if (myQuery.equals("s.servicefk=\"")) {
+                myQuery = myQuery + ent.getService() + "\"";
+            } else {
+                myQuery = myQuery + conditional + ent.getService() + "\"";
+            }
+        }
+        return myQuery;
+    }
+
 }

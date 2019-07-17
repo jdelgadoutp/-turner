@@ -31,13 +31,12 @@ public class Turns {
             turn.setUsers(user);
             turn.setUsername(username);
             turn.setServicename(servicename);
-            
-            if (!priorityname.equals("")){
+            if (!priorityname.equals("")) {
                 turn.setPriority(true);
-            }else{
+            } else {
                 turn.setPriority(false);
             }
-            
+
             turn.setPriorityname(priorityname);
             turnCtrl.create(turn);
             CreateFile(user, username, servicename, turn.getPriority(), priorityname);
@@ -53,9 +52,9 @@ public class Turns {
         File file = new File("ListaLLegada.txt");
 
         try {
-            FileWriter cursor = new FileWriter(file,true);
+            FileWriter cursor = new FileWriter(file, true);
             PrintWriter write = new PrintWriter(cursor);
-            
+
             if (!file.exists()) {
 
                 file.createNewFile();

@@ -10,6 +10,8 @@ import model.Prioritys;
 import model.Punts;
 import model.PuntsServices;
 import model.Service;
+import model.ServiceTailM;
+import model.TailattenTionM;
 import model.Turns;
 
 /**
@@ -40,6 +42,9 @@ public class PrincipalView extends javax.swing.JFrame {
         btnPunto = new javax.swing.JButton();
         btnTurn = new javax.swing.JButton();
         btnAdviser = new javax.swing.JButton();
+        btnAtention = new javax.swing.JButton();
+        btnListS = new javax.swing.JButton();
+        btnListA = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -82,6 +87,27 @@ public class PrincipalView extends javax.swing.JFrame {
             }
         });
 
+        btnAtention.setText("Atender");
+        btnAtention.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAtentionActionPerformed(evt);
+            }
+        });
+
+        btnListS.setText("Lista servicio");
+        btnListS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnListSActionPerformed(evt);
+            }
+        });
+
+        btnListA.setText("Lista atención");
+        btnListA.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnListAActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -99,7 +125,12 @@ public class PrincipalView extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnPunto, javax.swing.GroupLayout.DEFAULT_SIZE, 97, Short.MAX_VALUE)
-                    .addComponent(btnTurn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnTurn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnAtention, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnListA, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnListS, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -110,13 +141,17 @@ public class PrincipalView extends javax.swing.JFrame {
                 .addGap(36, 36, 36)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnServicio)
-                    .addComponent(btnPunto))
+                    .addComponent(btnPunto)
+                    .addComponent(btnListS))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnPrioridad)
-                    .addComponent(btnTurn))
+                    .addComponent(btnTurn)
+                    .addComponent(btnListA))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnAdviser)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnAdviser)
+                    .addComponent(btnAtention))
                 .addGap(25, 25, 25))
         );
 
@@ -171,8 +206,38 @@ public class PrincipalView extends javax.swing.JFrame {
         Turns turns = new Turns();
         turnsview.setTitle("Solicitud turno de atección");
         turnsview.setLocationRelativeTo(this);
-        turnsview.setVisible(true);    
+        turnsview.setVisible(true);
     }//GEN-LAST:event_btnTurnActionPerformed
+
+    private void btnAtentionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtentionActionPerformed
+        // TODO add your handling code here:
+        AtenderView atenderview = new AtenderView();
+        atenderview.setTitle("Atención de usuarios");
+        atenderview.setLocationRelativeTo(this);
+        atenderview.setVisible(true);
+    }//GEN-LAST:event_btnAtentionActionPerformed
+
+    private void btnListSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListSActionPerformed
+        // TODO add your handling code here:
+        ListView listview = new ListView();
+        ServiceTailM servicetailm = new ServiceTailM();
+        listview.setTitle("Lista de servicios disponibles para antender");
+        listview.setLocationRelativeTo(this);
+        listview.setVisible(true);
+        servicetailm.LlenarTailm(listview.tblList, "");
+    }//GEN-LAST:event_btnListSActionPerformed
+
+    private void btnListAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListAActionPerformed
+        // TODO add your handling code here:
+        ListView listview = new ListView();
+        TailattenTionM tailattenionm = new TailattenTionM();
+        listview.setTitle("Lista de usuarios antendendidos");
+        listview.setLocationRelativeTo(this);
+        listview.setVisible(true);
+        tailattenionm.LlenarAttention(listview.tblList, "");
+
+
+    }//GEN-LAST:event_btnListAActionPerformed
 
     /**
      * @param args the command line arguments
@@ -211,6 +276,9 @@ public class PrincipalView extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdviser;
+    private javax.swing.JButton btnAtention;
+    private javax.swing.JButton btnListA;
+    private javax.swing.JButton btnListS;
     private javax.swing.JButton btnPrioridad;
     private javax.swing.JButton btnPunto;
     private javax.swing.JButton btnServicio;

@@ -6,7 +6,6 @@
 package controller;
 
 import controller.exceptions.NonexistentEntityException;
-import controller.exceptions.PreexistingEntityException;
 import entity.Servicetailm;
 import java.io.Serializable;
 import java.util.List;
@@ -30,25 +29,19 @@ public class ServicetailmJpaController implements Serializable {
     public ServicetailmJpaController(EntityManagerFactory emf) {
         this.emf = emf;
     }
-
     private EntityManagerFactory emf = Persistence.createEntityManagerFactory("TurnerJpaPU");
 
     public EntityManager getEntityManager() {
         return emf.createEntityManager();
     }
 
-    public void create(Servicetailm servicetailm) throws PreexistingEntityException, Exception {
+    public void create(Servicetailm servicetailm) {
         EntityManager em = null;
         try {
             em = getEntityManager();
             em.getTransaction().begin();
             em.persist(servicetailm);
             em.getTransaction().commit();
-        } catch (Exception ex) {
-            if (findServicetailm(servicetailm.getServicefk()) != null) {
-                throw new PreexistingEntityException("Servicetailm " + servicetailm + " already exists.", ex);
-            }
-            throw ex;
         } finally {
             if (em != null) {
                 em.close();
@@ -61,7 +54,7 @@ public class ServicetailmJpaController implements Serializable {
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            String id = servicetailm.getServicefk();
+            Integer id = servicetailm.getTurn();
             if (findServicetailm(id) == null) {
                 throw new NonexistentEntityException("The servicetailm with id " + id + " no longer exists.");
             }
@@ -77,7 +70,7 @@ public class ServicetailmJpaController implements Serializable {
         }
     }
 
-    public void destroy(String id) throws NonexistentEntityException {
+    public void destroy(Integer id) throws NonexistentEntityException {
         EntityManager em = null;
         try {
             em = getEntityManager();
@@ -85,7 +78,7 @@ public class ServicetailmJpaController implements Serializable {
             Servicetailm servicetailm;
             try {
                 servicetailm = em.getReference(Servicetailm.class, id);
-                servicetailm.getServicefk();
+                servicetailm.getTurn();
             } catch (EntityNotFoundException enfe) {
                 throw new NonexistentEntityException("The servicetailm with id " + id + " no longer exists.", enfe);
             }
@@ -122,7 +115,7 @@ public class ServicetailmJpaController implements Serializable {
         }
     }
 
-    public Servicetailm findServicetailm(String id) {
+    public Servicetailm findServicetailm(Integer id) {
         EntityManager em = getEntityManager();
         try {
             return em.find(Servicetailm.class, id);

@@ -45,6 +45,12 @@
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Component id="btnPunto" pref="97" max="32767" attributes="0"/>
                   <Component id="btnTurn" max="32767" attributes="0"/>
+                  <Component id="btnAtention" max="32767" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="btnListA" max="32767" attributes="0"/>
+                  <Component id="btnListS" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
@@ -59,14 +65,19 @@
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="btnServicio" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnPunto" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnListS" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="btnPrioridad" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnTurn" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnListA" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="btnAdviser" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="btnAdviser" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnAtention" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -118,6 +129,30 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAdviserActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnAtention">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Atender"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAtentionActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnListS">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Lista servicio"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnListSActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnListA">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Lista atenci&#xf3;n"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnListAActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

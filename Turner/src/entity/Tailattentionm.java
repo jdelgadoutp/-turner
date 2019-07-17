@@ -34,7 +34,10 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Tailattentionm.findByUserid", query = "SELECT t FROM Tailattentionm t WHERE t.userid = :userid")
     , @NamedQuery(name = "Tailattentionm.findByUsername", query = "SELECT t FROM Tailattentionm t WHERE t.username = :username")
     , @NamedQuery(name = "Tailattentionm.findByPriority", query = "SELECT t FROM Tailattentionm t WHERE t.priority = :priority")
-    , @NamedQuery(name = "Tailattentionm.findByPriorityname", query = "SELECT t FROM Tailattentionm t WHERE t.priorityname = :priorityname")})
+    , @NamedQuery(name = "Tailattentionm.findByPriorityname", query = "SELECT t FROM Tailattentionm t WHERE t.priorityname = :priorityname")
+    , @NamedQuery(name = "Tailattentionm.findByPunt", query = "SELECT t FROM Tailattentionm t WHERE t.punt = :punt")
+    , @NamedQuery(name = "Tailattentionm.findByAdvinser", query = "SELECT t FROM Tailattentionm t WHERE t.advinser = :advinser")
+    , @NamedQuery(name = "Tailattentionm.findByAdvisername", query = "SELECT t FROM Tailattentionm t WHERE t.advisername = :advisername")})
 public class Tailattentionm implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -58,6 +61,12 @@ public class Tailattentionm implements Serializable {
     private Boolean priority;
     @Column(name = "priorityname")
     private String priorityname;
+    @Column(name = "punt")
+    private String punt;
+    @Column(name = "advinser")
+    private String advinser;
+    @Column(name = "advisername")
+    private String advisername;
 
     public Tailattentionm() {
     }
@@ -133,6 +142,30 @@ public class Tailattentionm implements Serializable {
 
     public void setPriorityname(String priorityname) {
         this.priorityname = priorityname;
+    }
+
+    public String getPunt() {
+        return punt;
+    }
+
+    public void setPunt(String punt) {
+        this.punt = punt;
+    }
+
+    public String getAdvinser() {
+        return advinser;
+    }
+
+    public void setAdvinser(String advinser) {
+        this.advinser = advinser;
+    }
+
+    public String getAdvisername() {
+        return advisername;
+    }
+
+    public void setAdvisername(String advisername) {
+        this.advisername = advisername;
     }
 
     @Override

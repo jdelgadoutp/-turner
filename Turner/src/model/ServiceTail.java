@@ -9,6 +9,8 @@ import controller.ServicetailJpaController;
 import entity.Servicetail;
 import java.time.Instant;
 import java.util.Date;
+import javax.persistence.EntityManager;
+import javax.persistence.Query;
 
 /**
  *
@@ -19,6 +21,18 @@ public class ServiceTail {
     private ServicetailJpaController servicetailCtrl = new ServicetailJpaController();
     private Servicetail servicetail = new Servicetail();
 
-    
+    public Servicetail ConsultaServicetail(String service) {
 
+        Servicetail servicetail = new Servicetail();
+        EntityManager em = servicetailCtrl.getEntityManager();
+        try {
+            Query query = em.createQuery("SELECT s FROM Servicetail s WHERE s.service = :service");
+            query.setParameter("service", service);
+            servicetail = (Servicetail) query.getSingleResult();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return servicetail;
+
+    }
 }
